@@ -32,4 +32,6 @@ const toggleUnitFormatAction = (unitFormat) => {
 
 export const toggleUnitFormat =  (unitFormat) => dispatch => {
 	dispatch(toggleUnitFormatAction(unitFormat));
+
+	localStorage.setItem('unitFormat', unitFormat);
 };

@@ -32,6 +32,7 @@ const Settings = ({
 	const handleResetCacheButtonClick = () => {
 		localStorage.removeItem('weatherData');
 		localStorage.removeItem('lastWeatherUpdate');
+		localStorage.removeItem('unitFormat');
 	};
 
 	const isCelsiusIsActiveUnitFormat = activeUnitFormat === 'c';

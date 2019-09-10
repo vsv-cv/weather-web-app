@@ -22,6 +22,7 @@ const initialState = {
 };
 const localWeatherData = localStorage.getItem('weatherData');
 const localLastWeatherUpdate = localStorage.getItem('lastWeatherUpdate');
+const localUnitFormat = localStorage.getItem('unitFormat');
 
 if (localWeatherData) {
 	initialState.data = JSON.parse(localWeatherData);
@@ -29,6 +30,10 @@ if (localWeatherData) {
 
 if (localLastWeatherUpdate) {
 	initialState.lastWeatherUpdate = localLastWeatherUpdate;
+}
+
+if (localUnitFormat) {
+	initialState.unitFormat = localUnitFormat;
 }
 
 const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middlewares)));
