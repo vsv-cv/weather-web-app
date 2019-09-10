@@ -1,0 +1,13 @@
+.WeatherCard {
+	min-width: 150px;
+	max-width: 150px;
+}
+
+.WeatherCard.card {
+	margin-top: 15px;
+	margin-bottom: 15px;;
+}
+
+.WeatherCard-header {
+	height: 115px;
+}
