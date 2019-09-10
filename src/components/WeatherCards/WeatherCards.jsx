@@ -10,7 +10,7 @@ export const WeatherCards = ({
 	return (
 		<CardDeck className="WeatherCards">
 			{forecasts.map(item => {
-				const date = new Date(item.date).toDateString().split(' ')
+				const date = new Date(item.date * 1000).toDateString().split(' ')
 				return <WeatherCard
 					key={item.date}
 					dayName={date[0]}
