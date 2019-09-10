@@ -14,15 +14,21 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
 	unitFormat: 'c',
+	lastWeatherUpdate: null,
 	data: {
 		location: {},
 		forecasts: []
 	}
 };
-const localData = localStorage.getItem('weatherData');
+const localWeatherData = localStorage.getItem('weatherData');
+const localLastWeatherUpdate = localStorage.getItem('lastWeatherUpdate');
 
-if (localData) {
-	initialState.data = JSON.parse(localData);
+if (localWeatherData) {
+	initialState.data = JSON.parse(localWeatherData);
+}
+
+if (localLastWeatherUpdate) {
+	initialState.lastWeatherUpdate = localLastWeatherUpdate;
 }
 
 const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middlewares)));

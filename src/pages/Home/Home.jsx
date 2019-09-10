@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import WeatherCards from "../../components/WeatherCards";
+import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeatherData } from '../../store/actions'
 import {
 	selectWeatherData,
-	selectUnitFormat
+	selectUnitFormat,
+	selectLastWeatherUpdate
 } from '../../store/selectors'
 
 export const mapState = (state) => ({
 	weatherData: selectWeatherData(state),
-	unitFormat: selectUnitFormat(state)
+	unitFormat: selectUnitFormat(state),
+	lastWeatherUpdate: selectLastWeatherUpdate(state)
 });
 
 export const mapDispatch = dispatch => {
@@ -26,10 +29,15 @@ class Home extends Component {
 		this.props.fetchWeatherData();
 	}
 
+	handleUpdateButtonClick = () => {
+		this.props.fetchWeatherData();
+	};
+
 	render () {
 		const {
 			weatherData,
-			unitFormat
+			unitFormat,
+			lastWeatherUpdate
 		} = this.props;
 		const {
 			location,
@@ -44,6 +52,15 @@ class Home extends Component {
 					forecasts={forecasts}
 					unitFormat={unitFormat.toUpperCase()}
 				/>
+				<div>Last update: {lastWeatherUpdate}</div>
+				<div>
+					<Button
+						variant="success"
+						onClick={this.handleUpdateButtonClick}
+					>
+						Update
+					</Button>
+				</div>
 			</>
 		);
 	}

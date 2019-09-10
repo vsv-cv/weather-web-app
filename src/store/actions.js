@@ -14,9 +14,12 @@ export const fetchWeatherData = () => {
 
 		return getWeatherInfo(unitFormat).then(
 			({ data }) => {
-				dispatch(fetchWeatherDataAction(data));
+				const date = new Date().toLocaleString();
+
+				dispatch(fetchWeatherDataAction({ data, date }));
 
 				localStorage.setItem('weatherData', JSON.stringify(data));
+				localStorage.setItem('lastWeatherUpdate', date)
 			},
 			error => console.error(error)
 		);

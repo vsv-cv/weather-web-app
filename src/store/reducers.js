@@ -8,7 +8,8 @@ export default function weaterApp (state = {}, action) {
 		case FETCH_WEATHER_DATA:
 			return {
 				...state,
-				data: action.payload
+				data: action.payload.data,
+				lastWeatherUpdate: action.payload.date
 			};
 		case CHANGE_UNIT_FORMAT:
 			return {
