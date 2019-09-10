@@ -8,10 +8,10 @@ import {
 } from './consts'
 
 const getGeolocation = () => {
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		const geolocation = {
-			latitude: 0,
-			longitude: 0
+			latitude: 48.2942976,
+			longitude: 25.9366912
 		};
 
 		if ("geolocation" in navigator) {
@@ -22,7 +22,7 @@ const getGeolocation = () => {
 
 					resolve(geolocation);
 				},
-				error => reject(error)
+				() => resolve(geolocation)
 			);
 		} else {
 			resolve(geolocation);
